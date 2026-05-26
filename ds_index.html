@@ -1,0 +1,1014 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>DanSebo Global Services Ltd | Your Vision, Our Expertise</title>
+  <meta name="description" content="DanSebo Global Services Ltd — Nigerian IT solutions, digital services, professional printing & branding, entrepreneurial development training, and general consultancy. Based in Kaduna, Nigeria.">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+  <link href="https://fonts.googleapis.com/css2?family=Syne:wght@400;500;600;700&family=DM+Sans:wght@300;400;500;600&display=swap" rel="stylesheet">
+  <style>
+    /* ═══════════════════════════════════
+       RESET & VARIABLES
+    ═══════════════════════════════════ */
+    :root {
+      --navy:#0f1e3d; --navy2:#1a2f5a; --navy3:#080f1f;
+      --orange:#e8651a; --orange2:#f07d38; --orange3:#c4520d;
+      --white:#fff; --off:#f4f6fa; --muted:rgba(255,255,255,0.85);
+      --border:rgba(255,255,255,0.08); --card:rgba(255,255,255,0.04);
+    }
+    *,*::before,*::after{margin:0;padding:0;box-sizing:border-box;}
+    html{scroll-behavior:smooth;}
+    body{font-family:'DM Sans',sans-serif;background:var(--navy3);color:#fff;overflow-x:hidden;}
+    .container{max-width:1200px;margin:0 auto;padding:0 20px;}
+    ::-webkit-scrollbar{width:5px;}
+    ::-webkit-scrollbar-track{background:var(--navy3);}
+    ::-webkit-scrollbar-thumb{background:var(--orange);border-radius:3px;}
+
+    /* ═══════════════════════════════════
+       HEADER
+    ═══════════════════════════════════ */
+    .site-header{position:fixed;top:0;left:0;right:0;z-index:1000;background:rgba(8,15,31,0.95);backdrop-filter:blur(20px);border-bottom:1px solid var(--border);}
+    .header-inner{display:flex;align-items:center;justify-content:space-between;padding:14px 20px;max-width:1200px;margin:0 auto;}
+    .logo-wrap{display:flex;align-items:center;gap:10px;text-decoration:none;}
+    .logo-img{height:40px;border-radius:8px;object-fit:contain;}
+    .logo-icon{width:42px;height:42px;background:var(--orange);border-radius:10px;display:flex;align-items:center;justify-content:center;font-family:'Syne',sans-serif;font-weight:800;font-size:16px;color:#fff;flex-shrink:0;}
+    .logo-name{font-family:'Syne',sans-serif;font-weight:700;font-size:15px;color:#fff;line-height:1;letter-spacing:0.5px;}
+    .logo-sub{font-size:9px;color:var(--orange);letter-spacing:2px;text-transform:uppercase;margin-top:3px;font-weight:500;}
+    .main-nav{display:flex;align-items:center;gap:4px;}
+    .main-nav a{color:rgba(255,255,255,0.85);text-decoration:none;font-size:13px;font-weight:500;padding:8px 12px;border-radius:8px;transition:0.2s;}
+    .main-nav a:hover,.main-nav a.active{color:var(--orange);}
+    .header-cta{display:flex;align-items:center;gap:8px;}
+    .btn-outline{padding:8px 16px;border:1px solid rgba(255,255,255,0.2);border-radius:8px;color:rgba(255,255,255,0.6);font-size:12px;font-weight:500;text-decoration:none;transition:0.2s;background:transparent;}
+    .btn-outline:hover{border-color:var(--orange);color:var(--orange);}
+    .btn-primary{padding:9px 18px;background:var(--orange);border:none;border-radius:8px;color:#fff;font-size:13px;font-weight:600;text-decoration:none;transition:0.2s;cursor:pointer;display:inline-flex;align-items:center;gap:6px;font-family:'DM Sans',sans-serif;}
+    .btn-primary:hover{background:var(--orange3);}
+    .hamburger{display:none;background:none;border:none;color:#fff;font-size:20px;cursor:pointer;padding:4px;}
+
+    /* ═══════════════════════════════════
+       HERO
+    ═══════════════════════════════════ */
+    .hero{min-height:100vh;background:linear-gradient(135deg,var(--navy3) 0%,var(--navy) 60%,var(--navy2) 100%);display:flex;align-items:center;padding:100px 0 60px;position:relative;overflow:hidden;}
+    .hero::before{content:'';position:absolute;top:-200px;right:-150px;width:500px;height:500px;background:radial-gradient(circle,rgba(232,101,26,0.12) 0%,transparent 70%);border-radius:50%;}
+    .hero-grid{display:grid;grid-template-columns:1fr 1fr;gap:60px;align-items:center;position:relative;z-index:2;}
+    .hero-badge{display:inline-flex;align-items:center;gap:8px;background:rgba(232,101,26,0.12);border:1px solid rgba(232,101,26,0.25);padding:6px 14px;border-radius:40px;font-size:12px;color:var(--orange2);font-weight:500;margin-bottom:20px;}
+    .hero-badge::before{content:'';width:6px;height:6px;border-radius:50%;background:var(--orange);animation:blink 1.5s infinite;}
+    @keyframes blink{0%,100%{opacity:1}50%{opacity:0.3}}
+    .hero h1{font-family:'Syne',sans-serif;font-weight:700;font-size:clamp(1.9rem,4vw,3.2rem);line-height:1.2;margin-bottom:18px;letter-spacing:-0.5px;}
+    .hero h1 span{color:var(--orange);}
+    .hero p{font-size:15px;color:rgba(255,255,255,0.85);line-height:1.7;margin-bottom:32px;max-width:480px;}
+    .hero-btns{display:flex;gap:12px;flex-wrap:wrap;margin-bottom:44px;}
+    .btn-hero-primary{padding:13px 26px;background:var(--orange);border:none;border-radius:10px;color:#fff;font-size:14px;font-weight:600;text-decoration:none;transition:0.25s;display:inline-flex;align-items:center;gap:8px;}
+    .btn-hero-primary:hover{background:var(--orange3);transform:translateY(-2px);}
+    .btn-hero-secondary{padding:13px 26px;background:rgba(255,255,255,0.06);border:1px solid rgba(255,255,255,0.15);border-radius:10px;color:#fff;font-size:14px;font-weight:500;text-decoration:none;transition:0.25s;display:inline-flex;align-items:center;gap:8px;}
+    .btn-hero-secondary:hover{border-color:var(--orange);color:var(--orange);}
+    .hero-stats{display:flex;gap:28px;flex-wrap:wrap;}
+    .hero-stat .num{font-family:'Syne',sans-serif;font-size:1.8rem;font-weight:800;color:var(--orange);}
+    .hero-stat .label{font-size:11px;color:rgba(255,255,255,0.7);margin-top:2px;}
+    .hero-visual{position:relative;}
+    .hero-card-main{background:rgba(255,255,255,0.05);border:1px solid rgba(255,255,255,0.1);border-radius:22px;padding:28px;backdrop-filter:blur(20px);}
+    .hero-card-main .card-tag{font-size:11px;letter-spacing:2px;text-transform:uppercase;color:var(--orange);font-weight:600;margin-bottom:14px;}
+    .hero-card-main h3{font-family:'Syne',sans-serif;font-size:1.1rem;font-weight:600;margin-bottom:10px;letter-spacing:0.2px;line-height:1.4;}
+    .hero-card-main p{font-size:13px;color:rgba(255,255,255,0.85);line-height:1.6;margin-bottom:18px;}
+    .service-list{display:flex;flex-direction:column;gap:8px;}
+    .service-item{display:flex;align-items:center;gap:10px;padding:10px 14px;background:rgba(255,255,255,0.06);border-radius:10px;border:1px solid rgba(255,255,255,0.1);font-size:13px;color:rgba(255,255,255,0.9);transition:0.2s;}
+    .service-item:hover{border-color:rgba(232,101,26,0.3);}
+    .service-item i{color:var(--orange);width:16px;}
+
+    /* ═══════════════════════════════════
+       SECTIONS
+    ═══════════════════════════════════ */
+    section{padding:80px 0;}
+    .section-tag{display:inline-block;font-size:11px;letter-spacing:2px;text-transform:uppercase;color:var(--orange);font-weight:600;margin-bottom:10px;}
+    .section-title{font-family:'Syne',sans-serif;font-weight:700;font-size:clamp(1.5rem,2.8vw,2.2rem);line-height:1.3;margin-bottom:14px;letter-spacing:-0.3px;}
+    .section-title span{color:var(--orange);font-weight:700;}
+    .section-desc{font-size:15px;color:rgba(255,255,255,0.8);line-height:1.7;max-width:560px;}
+    .section-header{margin-bottom:48px;}
+    .section-header.centered{text-align:center;}
+    .section-header.centered .section-desc{margin:0 auto;}
+
+    /* ═══════════════════════════════════
+       SERVICES
+    ═══════════════════════════════════ */
+    #services{background:rgba(255,255,255,0.02);}
+    .services-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(240px,1fr));gap:20px;}
+    .service-card{background:rgba(255,255,255,0.05);border:1px solid rgba(255,255,255,0.12);border-radius:18px;padding:26px;transition:0.3s;position:relative;overflow:hidden;}
+    .service-card::before{content:'';position:absolute;top:0;left:0;right:0;height:3px;background:var(--orange);transform:scaleX(0);transition:0.3s;transform-origin:left;}
+    .service-card:hover{border-color:rgba(232,101,26,0.2);transform:translateY(-3px);}
+    .service-card:hover::before{transform:scaleX(1);}
+    .service-icon{width:50px;height:50px;background:rgba(232,101,26,0.1);border-radius:13px;display:flex;align-items:center;justify-content:center;margin-bottom:18px;font-size:20px;color:var(--orange);transition:0.3s;}
+    .service-card:hover .service-icon{background:var(--orange);color:#fff;}
+    .service-card h3{font-family:'Syne',sans-serif;font-size:15px;font-weight:600;margin-bottom:8px;letter-spacing:0.2px;line-height:1.3;}
+    .service-card p{font-size:13px;color:rgba(255,255,255,0.8);line-height:1.6;margin-bottom:14px;}
+    .service-card ul{list-style:none;display:flex;flex-direction:column;gap:5px;}
+    .service-card ul li{font-size:12px;color:rgba(255,255,255,0.75);display:flex;align-items:center;gap:7px;}
+    .service-card ul li::before{content:'→';color:var(--orange);font-size:10px;}
+
+    /* ═══════════════════════════════════
+       ABOUT
+    ═══════════════════════════════════ */
+    .about-grid{display:grid;grid-template-columns:1fr 1fr;gap:60px;align-items:center;}
+    .about-img-main{background:linear-gradient(135deg,var(--navy2),var(--navy));border:1px solid var(--border);border-radius:22px;padding:36px;text-align:center;position:relative;overflow:hidden;margin-bottom:20px;}
+    .about-img-main::after{content:'';position:absolute;top:0;right:0;bottom:0;left:0;background:linear-gradient(135deg,rgba(232,101,26,0.06),transparent);}
+    .about-icon-big{font-size:4rem;margin-bottom:14px;display:block;}
+    .about-img-main h3{font-family:'Syne',sans-serif;font-size:1.1rem;font-weight:700;margin-bottom:6px;letter-spacing:0.2px;}
+    .about-img-main p{font-size:12px;color:rgba(255,255,255,0.75);}
+    .about-badge-rc{display:inline-block;background:var(--orange);padding:8px 16px;border-radius:10px;font-size:11px;font-weight:700;letter-spacing:1px;margin-bottom:16px;}
+    .about-stats-mini{display:grid;grid-template-columns:1fr 1fr;gap:10px;}
+    .mini-stat{background:rgba(255,255,255,0.04);border:1px solid rgba(255,255,255,0.06);border-radius:13px;padding:14px;text-align:center;}
+    .mini-stat .n{font-family:'Syne',sans-serif;font-size:1.4rem;font-weight:800;color:var(--orange);}
+    .mini-stat .l{font-size:11px;color:rgba(255,255,255,0.7);margin-top:2px;}
+    .about-content p{font-size:14px;color:rgba(255,255,255,0.85);line-height:1.8;margin-bottom:14px;}
+    .values-list{display:flex;flex-direction:column;gap:10px;margin:24px 0;}
+    .value-item{display:flex;align-items:flex-start;gap:13px;padding:13px 16px;background:rgba(255,255,255,0.03);border:1px solid rgba(255,255,255,0.06);border-radius:12px;}
+    .value-item i{color:var(--orange);font-size:15px;margin-top:2px;flex-shrink:0;}
+    .value-item strong{font-size:13px;font-weight:600;display:block;margin-bottom:2px;}
+    .value-item span{font-size:12px;color:rgba(255,255,255,0.75);}
+
+    /* ═══════════════════════════════════
+       TEAM
+    ═══════════════════════════════════ */
+    #team{background:rgba(255,255,255,0.02);}
+    .team-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(180px,1fr));gap:20px;}
+    .team-card{background:rgba(255,255,255,0.06);border:1px solid rgba(255,255,255,0.12);border-radius:18px;padding:26px 18px;text-align:center;transition:0.3s;}
+    .team-card:hover{border-color:rgba(232,101,26,0.3);transform:translateY(-4px);box-shadow:0 16px 40px rgba(0,0,0,0.3);}
+    .team-avatar{width:76px;height:76px;border-radius:50%;background:linear-gradient(135deg,var(--navy2),var(--orange));display:flex;align-items:center;justify-content:center;margin:0 auto 14px;font-family:'Syne',sans-serif;font-size:26px;font-weight:800;color:#fff;border:3px solid rgba(232,101,26,0.25);overflow:hidden;flex-shrink:0;}
+    .team-avatar img{width:100%;height:100%;object-fit:cover;border-radius:50%;}
+    .team-card.ceo .team-avatar{width:88px;height:88px;font-size:30px;background:var(--orange);border-color:rgba(255,255,255,0.2);}
+    .team-card h3{font-family:'Syne',sans-serif;font-size:13px;font-weight:600;margin-bottom:4px;line-height:1.4;letter-spacing:0.2px;}
+    .team-card .role{font-size:11px;color:var(--orange);font-weight:600;letter-spacing:0.5px;margin-bottom:4px;}
+    .team-card .dept{font-size:11px;color:rgba(255,255,255,0.65);}
+    .empty-state{grid-column:1/-1;text-align:center;padding:48px;color:rgba(255,255,255,0.25);font-size:14px;}
+    .empty-state i{font-size:2.5rem;display:block;margin-bottom:12px;color:rgba(255,255,255,0.15);}
+
+    /* ═══════════════════════════════════
+       GALLERY
+    ═══════════════════════════════════ */
+    .gallery-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(220px,1fr));gap:16px;}
+    .gallery-item{background:rgba(255,255,255,0.04);border:1px solid rgba(255,255,255,0.08);border-radius:16px;overflow:hidden;aspect-ratio:4/3;position:relative;transition:0.3s;cursor:pointer;}
+    .gallery-item img{width:100%;height:100%;object-fit:cover;transition:0.3s;}
+    .gallery-item:hover img{transform:scale(1.05);}
+    .gallery-item:hover{border-color:rgba(232,101,26,0.3);}
+    .gallery-placeholder{width:100%;height:100%;display:flex;flex-direction:column;align-items:center;justify-content:center;gap:10px;color:rgba(255,255,255,0.2);}
+    .gallery-placeholder i{font-size:2rem;}
+    .gallery-overlay{position:absolute;bottom:0;left:0;right:0;background:linear-gradient(transparent,rgba(0,0,0,0.92));padding:20px 14px 14px;transform:translateY(0);transition:0.3s;}
+    .gallery-item:hover .gallery-overlay{transform:translateY(0);}
+    .gallery-overlay span{font-size:12px;font-weight:500;}
+    .gallery-cat{font-size:10px;color:var(--orange);letter-spacing:1px;text-transform:uppercase;display:block;margin-bottom:3px;}
+
+    /* ═══════════════════════════════════
+       REVIEWS
+    ═══════════════════════════════════ */
+    #reviews{background:rgba(255,255,255,0.02);}
+    .reviews-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(260px,1fr));gap:18px;margin-bottom:36px;}
+    .review-card{background:rgba(255,255,255,0.06);border:1px solid rgba(255,255,255,0.12);border-radius:18px;padding:22px;transition:0.3s;}
+    .review-card:hover{border-color:rgba(232,101,26,0.2);}
+    .review-stars{color:var(--orange);font-size:13px;margin-bottom:10px;letter-spacing:2px;}
+    .review-text{font-size:13px;color:rgba(255,255,255,0.85);line-height:1.7;margin-bottom:14px;font-style:italic;}
+    .review-author{display:flex;align-items:center;gap:10px;}
+    .review-avatar{width:36px;height:36px;border-radius:50%;background:var(--orange);display:flex;align-items:center;justify-content:center;font-size:13px;font-weight:700;font-family:'Syne',sans-serif;flex-shrink:0;}
+    .review-name{font-size:13px;font-weight:600;}
+    .review-date{font-size:11px;color:rgba(255,255,255,0.6);}
+    .add-review{background:rgba(255,255,255,0.03);border:1px solid rgba(255,255,255,0.07);border-radius:18px;padding:26px;max-width:600px;margin:0 auto;}
+    .add-review h4{font-family:'Syne',sans-serif;font-size:1rem;font-weight:700;margin-bottom:16px;}
+    .review-inputs{display:grid;grid-template-columns:1fr 1fr;gap:10px;margin-bottom:10px;}
+    .add-review input,.add-review textarea{width:100%;padding:11px 14px;background:rgba(255,255,255,0.05);border:1px solid rgba(255,255,255,0.1);border-radius:10px;color:#fff;font-family:'DM Sans',sans-serif;font-size:13px;outline:none;transition:0.2s;}
+    .add-review input:focus,.add-review textarea:focus{border-color:var(--orange);}
+    .add-review textarea{min-height:80px;resize:vertical;margin-bottom:10px;}
+    .form-msg{padding:10px 16px;border-radius:10px;font-size:13px;text-align:center;margin-top:10px;display:none;}
+    .form-msg.success{background:rgba(0,200,0,0.1);color:#88ff88;display:block;}
+    .form-msg.error{background:rgba(200,0,0,0.1);color:#ff8888;display:block;}
+
+    /* ═══════════════════════════════════
+       CONTACT
+    ═══════════════════════════════════ */
+    .contact-grid{display:grid;grid-template-columns:1fr 1fr;gap:48px;align-items:start;}
+    .contact-info-block{display:flex;flex-direction:column;gap:14px;}
+    .contact-item{display:flex;align-items:flex-start;gap:14px;padding:18px;background:rgba(255,255,255,0.03);border:1px solid rgba(255,255,255,0.07);border-radius:14px;transition:0.2s;}
+    .contact-item:hover{border-color:rgba(232,101,26,0.2);}
+    .contact-item-icon{width:42px;height:42px;background:rgba(232,101,26,0.1);border-radius:11px;display:flex;align-items:center;justify-content:center;color:var(--orange);font-size:16px;flex-shrink:0;}
+    .contact-item h4{font-size:11px;color:rgba(255,255,255,0.65);letter-spacing:1px;text-transform:uppercase;margin-bottom:3px;}
+    .contact-item p,.contact-item a{font-size:14px;color:#fff;text-decoration:none;line-height:1.5;}
+    .contact-item a:hover{color:var(--orange);}
+    .social-links-block{margin-top:4px;}
+    .social-links-block h4{font-size:11px;color:rgba(255,255,255,0.65);letter-spacing:1px;text-transform:uppercase;margin-bottom:14px;}
+    .social-row{display:flex;gap:10px;flex-wrap:wrap;}
+    .social-btn{width:42px;height:42px;border-radius:11px;display:flex;align-items:center;justify-content:center;font-size:16px;color:#fff;text-decoration:none;transition:0.25s;border:1px solid rgba(255,255,255,0.1);}
+    .social-btn:hover{transform:translateY(-3px);border-color:transparent;}
+    .social-btn.fb{background:#1877F2;}.social-btn.ig{background:linear-gradient(45deg,#f09433,#e6683c,#dc2743,#cc2366,#bc1888);}
+    .social-btn.tt{background:#010101;}.social-btn.wa{background:#25D366;}
+    .contact-form{background:rgba(255,255,255,0.03);border:1px solid rgba(255,255,255,0.07);border-radius:22px;padding:28px;}
+    .contact-form h3{font-family:'Syne',sans-serif;font-size:1.1rem;font-weight:600;margin-bottom:20px;letter-spacing:0.2px;}
+    .form-group{margin-bottom:14px;}
+    .form-group label{font-size:11px;color:rgba(255,255,255,0.75);letter-spacing:0.5px;display:block;margin-bottom:5px;}
+    .form-group input,.form-group textarea,.form-group select{width:100%;padding:11px 14px;background:rgba(255,255,255,0.05);border:1px solid rgba(255,255,255,0.1);border-radius:10px;color:#fff;font-family:'DM Sans',sans-serif;font-size:13px;outline:none;transition:0.2s;resize:vertical;}
+    .form-group input:focus,.form-group textarea:focus,.form-group select:focus{border-color:var(--orange);}
+    .form-group textarea{min-height:90px;}
+    .form-group select option{background:var(--navy3);}
+
+    /* ═══════════════════════════════════
+       FOOTER
+    ═══════════════════════════════════ */
+    .site-footer{background:var(--navy3);border-top:1px solid rgba(255,255,255,0.06);padding:56px 0 0;}
+    .footer-grid{display:grid;grid-template-columns:2fr 1fr 1fr 1fr;gap:40px;padding-bottom:40px;border-bottom:1px solid rgba(255,255,255,0.06);}
+    .footer-brand p{font-size:13px;color:rgba(255,255,255,0.7);line-height:1.7;max-width:250px;margin:14px 0 20px;}
+    .footer-social{display:flex;gap:8px;flex-wrap:wrap;}
+    .footer-social-icon{width:34px;height:34px;border-radius:9px;background:rgba(255,255,255,0.05);border:1px solid rgba(255,255,255,0.08);display:flex;align-items:center;justify-content:center;color:rgba(255,255,255,0.45);font-size:13px;text-decoration:none;transition:0.2s;}
+    .footer-social-icon:hover{background:var(--orange);color:#fff;border-color:var(--orange);}
+    .footer-col h5{font-family:'Syne',sans-serif;font-size:11px;font-weight:700;letter-spacing:1.5px;text-transform:uppercase;color:rgba(255,255,255,0.75);margin-bottom:16px;}
+    .footer-col a{display:flex;align-items:center;gap:6px;color:rgba(255,255,255,0.7);font-size:13px;text-decoration:none;margin-bottom:9px;transition:0.2s;}
+    .footer-col a:hover{color:var(--orange);}
+    .footer-bottom{padding:18px 0;display:flex;align-items:center;justify-content:space-between;flex-wrap:wrap;gap:8px;}
+    .footer-bottom p{font-size:12px;color:rgba(255,255,255,0.55);}
+    .footer-bottom span{color:var(--orange);}
+
+    /* ═══════════════════════════════════
+       FLOATING BUTTONS
+    ═══════════════════════════════════ */
+    .fab-whatsapp{position:fixed;bottom:24px;right:24px;width:54px;height:54px;background:#25D366;border-radius:50%;display:flex;align-items:center;justify-content:center;color:#fff;font-size:22px;text-decoration:none;box-shadow:0 6px 24px rgba(37,211,102,0.4);z-index:999;transition:0.25s;animation:pulse-wa 2.5s infinite;}
+    .fab-whatsapp:hover{transform:scale(1.1);}
+    @keyframes pulse-wa{0%{box-shadow:0 0 0 0 rgba(37,211,102,0.5);}70%{box-shadow:0 0 0 14px rgba(37,211,102,0);}100%{box-shadow:0 0 0 0 rgba(37,211,102,0);}}
+    .back-to-top{position:fixed;bottom:90px;right:26px;width:40px;height:40px;background:rgba(255,255,255,0.06);border:1px solid rgba(255,255,255,0.1);border-radius:50%;color:#fff;font-size:13px;cursor:pointer;z-index:998;display:flex;align-items:center;justify-content:center;opacity:0;pointer-events:none;transition:0.3s;transform:translateY(8px);}
+    .back-to-top.visible{opacity:1;pointer-events:all;transform:translateY(0);}
+    .back-to-top:hover{background:var(--orange);border-color:var(--orange);}
+
+    /* ═══════════════════════════════════
+       CEO BIO CARD
+    ═══════════════════════════════════ */
+    .ceo-bio-card{display:flex;gap:32px;align-items:flex-start;background:rgba(255,255,255,0.03);border:1px solid rgba(255,255,255,0.08);border-radius:20px;padding:32px;margin-bottom:40px;}
+    .ceo-bio-avatar{width:100px;height:100px;border-radius:50%;background:var(--orange);display:flex;align-items:center;justify-content:center;font-family:"Syne",sans-serif;font-size:28px;font-weight:800;color:#fff;flex-shrink:0;overflow:hidden;border:3px solid rgba(232,101,26,0.3);}
+    .ceo-bio-avatar img{width:100%;height:100%;object-fit:cover;border-radius:50%;}
+    .ceo-bio-tag{font-size:11px;letter-spacing:2px;text-transform:uppercase;color:var(--orange);font-weight:600;margin-bottom:6px;}
+    .ceo-bio-name{font-family:"Syne",sans-serif;font-size:1.3rem;font-weight:700;margin-bottom:12px;letter-spacing:0.2px;}
+    .ceo-bio-text{font-size:13px;color:rgba(255,255,255,0.85);line-height:1.7;margin-bottom:10px;}
+    .ceo-bio-badges{display:flex;flex-wrap:wrap;gap:8px;margin-top:16px;}
+    .ceo-bio-badges span{display:inline-flex;align-items:center;gap:6px;font-size:11px;padding:5px 12px;background:rgba(232,101,26,0.1);border:1px solid rgba(232,101,26,0.2);border-radius:20px;color:var(--orange2);}
+
+    /* ═══════════════════════════════════
+       CERTIFICATIONS
+    ═══════════════════════════════════ */
+    .certs-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(220px,1fr));gap:20px;}
+    .cert-card{background:rgba(255,255,255,0.06);border:1px solid rgba(255,255,255,0.12);border-radius:18px;padding:26px;text-align:center;transition:0.3s;}
+    .cert-card:hover{border-color:rgba(232,101,26,0.3);transform:translateY(-3px);}
+    .cert-icon{width:56px;height:56px;background:rgba(232,101,26,0.1);border-radius:14px;display:flex;align-items:center;justify-content:center;margin:0 auto 16px;font-size:22px;color:var(--orange);}
+    .cert-card h4{font-family:"Syne",sans-serif;font-size:14px;font-weight:600;margin-bottom:8px;letter-spacing:0.2px;}
+    .cert-card p{font-size:12px;color:rgba(255,255,255,0.8);line-height:1.6;margin-bottom:12px;}
+    .cert-num{font-size:11px;font-weight:700;color:var(--orange);letter-spacing:1px;background:rgba(232,101,26,0.08);padding:4px 12px;border-radius:20px;display:inline-block;}
+
+    /* ═══════════════════════════════════
+       COLLABORATION
+    ═══════════════════════════════════ */
+    .collab-card{display:flex;gap:24px;align-items:flex-start;background:rgba(255,255,255,0.03);border:1px solid rgba(255,255,255,0.07);border-radius:20px;padding:28px;}
+    .collab-icon{width:56px;height:56px;background:var(--orange);border-radius:14px;display:flex;align-items:center;justify-content:center;font-size:22px;color:#fff;flex-shrink:0;}
+    .collab-content h4{font-family:"Syne",sans-serif;font-size:1rem;font-weight:600;margin-bottom:10px;letter-spacing:0.2px;}
+    .collab-content p{font-size:13px;color:rgba(255,255,255,0.85);line-height:1.7;margin-bottom:14px;}
+    .collab-tags{display:flex;flex-wrap:wrap;gap:8px;}
+    .collab-tags span{font-size:11px;padding:4px 12px;background:rgba(255,255,255,0.06);border:1px solid rgba(255,255,255,0.12);border-radius:20px;color:rgba(255,255,255,0.8);display:inline-flex;align-items:center;gap:6px;}
+    .collab-tags span i{color:var(--orange);}
+
+    /* ═══════════════════════════════════
+       ANIMATIONS
+    ═══════════════════════════════════ */
+    .fade-in{opacity:0;transform:translateY(20px);transition:opacity 0.6s ease,transform 0.6s ease;}
+    .fade-in.visible{opacity:1;transform:translateY(0);}
+
+    /* ═══════════════════════════════════
+       RESPONSIVE
+    ═══════════════════════════════════ */
+    @media(max-width:900px){
+      .ceo-bio-card{flex-direction:column;align-items:center;text-align:center;}
+      .ceo-bio-badges{justify-content:center;}
+      .collab-card{flex-direction:column;}
+      .main-nav{display:none;position:fixed;top:70px;left:0;right:0;background:rgba(8,15,31,0.98);flex-direction:column;padding:16px;gap:4px;border-bottom:1px solid var(--border);z-index:999;}
+      .main-nav.open{display:flex;}
+      .hamburger{display:block;}
+      .hero-grid{grid-template-columns:1fr;gap:32px;padding:60px 0 40px;}
+      .hero-visual{display:none;}
+      .about-grid{grid-template-columns:1fr;gap:36px;}
+      .contact-grid{grid-template-columns:1fr;gap:32px;}
+      .footer-grid{grid-template-columns:1fr 1fr;gap:28px;}
+      .footer-brand{grid-column:1/-1;}
+      .review-inputs{grid-template-columns:1fr;}
+      .header-cta .btn-outline{display:none;}
+    }
+    @media(max-width:560px){
+      .footer-grid{grid-template-columns:1fr;}
+      .services-grid{grid-template-columns:1fr;}
+      .gallery-grid{grid-template-columns:repeat(2,1fr);}
+      .team-grid{grid-template-columns:repeat(2,1fr);}
+      .hero-btns{flex-direction:column;}
+      .hero-stats{gap:20px;}
+      .reviews-grid{grid-template-columns:1fr;}
+      body{font-size:14px;}
+    }
+
+    /* ═══════════════════════════════════
+       LIGHTBOX
+    ═══════════════════════════════════ */
+    .lightbox{position:fixed;inset:0;background:rgba(0,0,0,0.92);z-index:9999;display:none;align-items:center;justify-content:center;padding:20px;backdrop-filter:blur(8px);}
+    .lightbox.open{display:flex;animation:lb-in 0.25s ease;}
+    @keyframes lb-in{from{opacity:0;transform:scale(0.95)}to{opacity:1;transform:scale(1)}}
+    .lightbox-inner{position:relative;max-width:90vw;max-height:90vh;display:flex;flex-direction:column;align-items:center;gap:16px;}
+    .lightbox-img{max-width:90vw;max-height:78vh;object-fit:contain;border-radius:16px;box-shadow:0 30px 80px rgba(0,0,0,0.7);border:1px solid rgba(255,255,255,0.1);}
+    .lightbox-info{text-align:center;}
+    .lightbox-title{font-family:'Syne',sans-serif;font-size:1.1rem;font-weight:700;color:#fff;margin-bottom:4px;}
+    .lightbox-sub{font-size:12px;color:var(--orange);letter-spacing:1px;text-transform:uppercase;}
+    .lightbox-close{position:fixed;top:20px;right:24px;width:44px;height:44px;background:rgba(255,255,255,0.08);border:1px solid rgba(255,255,255,0.15);border-radius:50%;display:flex;align-items:center;justify-content:center;color:#fff;font-size:20px;cursor:pointer;transition:0.2s;z-index:10000;}
+    .lightbox-close:hover{background:var(--orange);border-color:var(--orange);}
+    .lightbox-nav{position:fixed;top:50%;transform:translateY(-50%);width:44px;height:44px;background:rgba(255,255,255,0.08);border:1px solid rgba(255,255,255,0.15);border-radius:50%;display:flex;align-items:center;justify-content:center;color:#fff;font-size:18px;cursor:pointer;transition:0.2s;z-index:10000;}
+    .lightbox-nav:hover{background:var(--orange);border-color:var(--orange);}
+    .lightbox-prev{left:16px;}.lightbox-next{right:16px;}
+    .lightbox-counter{position:fixed;bottom:20px;left:50%;transform:translateX(-50%);font-size:12px;color:rgba(255,255,255,0.4);background:rgba(0,0,0,0.5);padding:6px 14px;border-radius:20px;}
+    /* make gallery items and team avatars show pointer + zoom hint */
+    .gallery-item{cursor:zoom-in!important;}
+    .team-card{cursor:zoom-in;}
+    .team-card .team-avatar{cursor:zoom-in;}
+
+  </style>
+</head>
+<body>
+
+<!-- HEADER -->
+<header class="site-header" id="siteHeader">
+  <div class="header-inner">
+    <a href="#home" class="logo-wrap">
+      <img id="siteLogo" class="logo-img" src="" alt="DanSebo" style="display:none;">
+      <div class="logo-icon" id="logoFallback">DS</div>
+      <div class="logo-text-wrap">
+        <span class="logo-name">DanSebo</span>
+        <span class="logo-sub">Global Services Ltd</span>
+      </div>
+    </a>
+    <nav class="main-nav" id="mainNav">
+      <a href="#home" class="active">Home</a>
+      <a href="#services">Services</a>
+      <a href="#about">About</a>
+      <a href="#team">Team</a>
+      <a href="#gallery">Gallery</a>
+      <a href="#reviews">Reviews</a>
+      <a href="#certifications">Certifications</a>
+      <a href="#contact">Contact</a>
+    </nav>
+    <div class="header-cta">
+      <a href="ds_admin.html" class="btn-outline">Admin</a>
+      <a href="https://wa.me/2347068383802?text=Hello%20DanSebo!" target="_blank" class="btn-primary"><i class="fab fa-whatsapp"></i> Get in Touch</a>
+      <button class="hamburger" id="hamburgerBtn"><i class="fas fa-bars"></i></button>
+    </div>
+  </div>
+</header>
+
+<!-- HERO -->
+<section class="hero" id="home">
+  <div class="container hero-grid">
+    <div class="hero-content">
+      <div class="hero-badge">RC: 84133837 · Kaduna, Nigeria</div>
+      <h1>Your Vision,<br><span>Our Expertise</span></h1>
+      <p>DanSebo Global Services Ltd delivers cutting-edge IT solutions, professional branding, skills development training, and strategic consultancy to businesses, governments, and NGOs across Nigeria and beyond.</p>
+      <div class="hero-btns">
+        <a href="#services" class="btn-hero-primary"><i class="fas fa-rocket"></i> Explore Services</a>
+        <a href="#contact" class="btn-hero-secondary"><i class="fas fa-envelope"></i> Contact Us</a>
+      </div>
+      <div class="hero-stats">
+        <div class="hero-stat"><div class="num">7+</div><div class="label">Core Services</div></div>
+        <div class="hero-stat"><div class="num" id="teamCount">5</div><div class="label">Team Members</div></div>
+        <div class="hero-stat"><div class="num">100%</div><div class="label">Premium Quality</div></div>
+      </div>
+    </div>
+    <div class="hero-visual">
+      <div class="hero-card-main">
+        <div class="card-tag">What We Do</div>
+        <h3>End-to-End Digital & Business Solutions</h3>
+        <p>From IT infrastructure to brand identity — we cover every angle of your business growth.</p>
+        <div class="service-list">
+          <div class="service-item"><i class="fas fa-laptop-code"></i> IT & Digital Solutions</div>
+          <div class="service-item"><i class="fas fa-print"></i> Printing & Branding</div>
+          <div class="service-item"><i class="fas fa-graduation-cap"></i> Training & Skills Development</div>
+          <div class="service-item"><i class="fas fa-chart-line"></i> General Consultancy</div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- SERVICES -->
+<section id="services">
+  <div class="container">
+    <div class="section-header fade-in">
+      <span class="section-tag">What We Offer</span>
+      <h2 class="section-title">Our <span>Core Services</span></h2>
+      <p class="section-desc">Comprehensive solutions tailored to drive your business, organization, or career forward.</p>
+    </div>
+    <div class="services-grid">
+      <div class="service-card fade-in">
+        <div class="service-icon"><i class="fas fa-laptop-code"></i></div>
+        <h3>IT & Digital Solutions</h3>
+        <p>Full-spectrum digital transformation services for modern businesses.</p>
+        <ul>
+          <li>Digital Transformation Consulting</li>
+          <li>Website & E-commerce Development</li>
+          <li>ICT Setup & Network Solutions</li>
+          <li>Social Media Management</li>
+          <li>Cloud & Database Management</li>
+          <li>E-learning Solutions</li>
+        </ul>
+      </div>
+      <div class="service-card fade-in">
+        <div class="service-icon"><i class="fas fa-print"></i></div>
+        <h3>Printing & Branding</h3>
+        <p>Premium print and brand materials that make a lasting impression.</p>
+        <ul>
+          <li>Business Cards & Letterheads</li>
+          <li>Large Format Printing</li>
+          <li>Event Souvenirs & Branding</li>
+          <li>Packaging Design & Production</li>
+          <li>Wedding & Conference Materials</li>
+        </ul>
+      </div>
+      <div class="service-card fade-in">
+        <div class="service-icon"><i class="fas fa-graduation-cap"></i></div>
+        <h3>Training & Skills Development</h3>
+        <p>Empowering individuals and organizations through knowledge.</p>
+        <ul>
+          <li>Digital Skills Training</li>
+          <li>Graphics Design & ICT Proficiency</li>
+          <li>Entrepreneurship Programs</li>
+          <li>Exam Prep & Academic Tutoring</li>
+          <li>CBT Training</li>
+        </ul>
+      </div>
+      <div class="service-card fade-in">
+        <div class="service-icon"><i class="fas fa-chart-line"></i></div>
+        <h3>General Consultancy</h3>
+        <p>Strategic advisory services for sustainable organizational growth.</p>
+        <ul>
+          <li>Business Advisory & Strategy</li>
+          <li>Market Research & Feasibility</li>
+          <li>Capacity Building</li>
+          <li>ICT Hardware Supply</li>
+          <li>General Contracting</li>
+        </ul>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ABOUT -->
+<section id="about">
+  <div class="container">
+    <div class="about-grid">
+      <div class="about-visual fade-in">
+        <div class="about-img-main">
+          <span class="about-icon-big">🏢</span>
+          <h3>DanSebo Global Services Ltd</h3>
+          <p>Shop No. 52 Alhalal Plaza, Opp. Hamdala Hotel,<br>Waff Road, Kaduna State</p>
+        </div>
+        <div class="about-badge-rc">RC: 84133837</div>
+        <div class="about-stats-mini">
+          <div class="mini-stat"><div class="n">100%</div><div class="l">Original</div></div>
+          <div class="mini-stat"><div class="n">🇳🇬</div><div class="l">Nigerian Reg.</div></div>
+          <div class="mini-stat"><div class="n">NGO</div><div class="l">Trusted Partner</div></div>
+          <div class="mini-stat"><div class="n">Gov</div><div class="l">Approved</div></div>
+        </div>
+      </div>
+      <div class="about-content fade-in">
+        <span class="section-tag">About Us</span>
+        <h2 class="section-title">Innovation, Excellence &amp; <span>Dedication</span></h2>
+        <p>DanSebo Global Services Ltd is a Nigerian registered company (RC: 84133837) established with a commitment to providing cutting-edge IT solutions, digital services, professional printing and branding, entrepreneurial development training, and general consultancy services.</p>
+        <p>As a full-service printing and digital company, we bring creativity, innovation, and precision to every project. We cater to individuals, businesses, religious institutions, NGOs, schools, and government bodies — combining modern technology with skilled craftsmanship to deliver reliable, top-quality results.</p>
+        <p>We stand as a trusted partner to governments, businesses, and NGOs in achieving digital and operational excellence across Africa and beyond.</p>
+        <div class="values-list">
+          <div class="value-item"><i class="fas fa-eye"></i><div><strong>Our Vision</strong><span>To be a globally recognized brand driving digital transformation, entrepreneurial development, and sustainable growth across Africa and beyond.</span></div></div>
+          <div class="value-item"><i class="fas fa-bullseye"></i><div><strong>Our Mission</strong><span>Empowering individuals and organizations with innovative IT solutions, premium branding, and marketing services fostering entrepreneurship and skill development.</span></div></div>
+          <div class="value-item"><i class="fas fa-star"></i><div><strong>Excellence</strong><span>We deliver the highest standard in every project, ensuring quality that exceeds expectations.</span></div></div>
+          <div class="value-item"><i class="fas fa-lightbulb"></i><div><strong>Innovation</strong><span>We embrace creative thinking and modern technology to solve challenges in new ways.</span></div></div>
+          <div class="value-item"><i class="fas fa-shield-alt"></i><div><strong>Integrity</strong><span>We operate with honesty, transparency, and accountability in every engagement.</span></div></div>
+          <div class="value-item"><i class="fas fa-hands-helping"></i><div><strong>Empowerment</strong><span>We are committed to building capacity and creating opportunities for individuals and communities.</span></div></div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- TEAM -->
+<section id="team">
+  <div class="container">
+    <div class="section-header centered fade-in">
+      <span class="section-tag">Leadership Team</span>
+      <h2 class="section-title">Meet Our <span>Creative Team</span></h2>
+      <p class="section-desc">The passionate minds behind DanSebo's vision — Team Build Dreams.</p>
+    </div>
+    <!-- CEO BIO CARD -->
+    <div class="ceo-bio-card fade-in">
+      <div class="ceo-bio-avatar" id="ceoBioAvatar">AW</div>
+      <div class="ceo-bio-content">
+        <div class="ceo-bio-tag">Founder & CEO</div>
+        <h3 class="ceo-bio-name">Ahmad Ismail Waziri</h3>
+        <p class="ceo-bio-text">Ismail Ahmad Waziri is the Founder and Chief Executive Officer of Dan Sebo Global Services. A passionate entrepreneur, digital skills advocate, and community-driven leader committed to creating impact through innovation, education, and quality service delivery.</p>
+        <p class="ceo-bio-text">A graduate of Kaduna State University (B.Sc Education in Biology), he has attained several professional and digital skill certifications. With a strong background in digital services, printing solutions, and capacity building, he established DanSebo with a clear vision: to build a trusted brand that empowers individuals, supports businesses, and creates sustainable opportunities for growth.</p>
+        <div class="ceo-bio-badges">
+          <span><i class="fas fa-certificate"></i> CAC Registered</span>
+          <span><i class="fas fa-file-invoice"></i> SCUML Certified</span>
+          <span><i class="fas fa-award"></i> ISEYC Recognition Award</span>
+          <span><i class="fas fa-university"></i> Kaduna State University</span>
+        </div>
+      </div>
+    </div>
+    <div class="team-grid" id="teamGrid">
+      <div class="empty-state"><i class="fas fa-spinner fa-spin"></i>Loading team...</div>
+    </div>
+  </div>
+</section>
+
+<!-- GALLERY -->
+<section id="gallery">
+  <div class="container">
+    <div class="section-header centered fade-in">
+      <span class="section-tag">Portfolio</span>
+      <h2 class="section-title">Our <span>Work Gallery</span></h2>
+      <p class="section-desc">A showcase of our projects, events, training sessions and branded deliverables.</p>
+    </div>
+    <div class="gallery-grid" id="galleryGrid">
+      <div class="empty-state"><i class="fas fa-spinner fa-spin"></i>Loading gallery...</div>
+    </div>
+    <p style="text-align:center;margin-top:24px;font-size:12px;color:rgba(255,255,255,0.3);">Follow <strong style="color:var(--orange)">@DANSEBO</strong> on social media for live updates</p>
+  </div>
+</section>
+
+<!-- REVIEWS -->
+<section id="reviews">
+  <div class="container">
+    <div class="section-header centered fade-in">
+      <span class="section-tag">Testimonials</span>
+      <h2 class="section-title">What <span>Clients Say</span></h2>
+      <p class="section-desc">Trusted by businesses, governments and individuals across Nigeria.</p>
+    </div>
+    <div class="reviews-grid" id="reviewsList">
+      <div class="empty-state" style="grid-column:1/-1"><i class="fas fa-spinner fa-spin"></i>Loading reviews...</div>
+    </div>
+    <div class="add-review fade-in">
+      <h4><i class="fas fa-pen" style="color:var(--orange);margin-right:8px;"></i>Leave a Review</h4>
+      <div class="review-inputs">
+        <input type="text" id="reviewName" placeholder="Your name">
+        <input type="text" id="reviewOrg" placeholder="Company / Organization (optional)">
+      </div>
+      <textarea id="reviewText" placeholder="Share your experience with DanSebo..."></textarea>
+      <button class="btn-primary" id="submitReviewBtn" style="width:100%;justify-content:center;padding:13px;"><i class="fas fa-paper-plane"></i> Submit Review</button>
+      <div id="reviewMsg" class="form-msg"></div>
+    </div>
+  </div>
+</section>
+
+<!-- CERTIFICATIONS -->
+<section id="certifications" style="background:rgba(255,255,255,0.02);">
+  <div class="container">
+    <div class="section-header centered fade-in">
+      <span class="section-tag">Credentials</span>
+      <h2 class="section-title">Our <span>Certifications</span></h2>
+      <p class="section-desc">Fully registered, certified, and recognized — DanSebo operates with complete legal and professional compliance.</p>
+    </div>
+    <div class="certs-grid fade-in">
+      <div class="cert-card">
+        <div class="cert-icon"><i class="fas fa-building"></i></div>
+        <h4>CAC Certificate</h4>
+        <p>Certificate of Incorporation — Federal Republic of Nigeria. Private Company Limited by Shares.</p>
+        <div class="cert-num">RC: 84133837</div>
+      </div>
+      <div class="cert-card">
+        <div class="cert-icon"><i class="fas fa-shield-alt"></i></div>
+        <h4>SCUML Registration</h4>
+        <p>Special Control Unit Against Money Laundering — Duly registered under the Money Laundering Prevention Act, 2022.</p>
+        <div class="cert-num">RN/SC 191801275</div>
+      </div>
+      <div class="cert-card">
+        <div class="cert-icon"><i class="fas fa-file-invoice-dollar"></i></div>
+        <h4>Tax Identification</h4>
+        <p>Certificate of Taxpayer Identification Number issued by the Joint Tax Board — Federal Inland Revenue Service.</p>
+        <div class="cert-num">TIN: 1086046867</div>
+      </div>
+      <div class="cert-card">
+        <div class="cert-icon"><i class="fas fa-award"></i></div>
+        <h4>ISEYC Recognition</h4>
+        <p>Certificate of Recognition for Outstanding Commitment to Youth Empowerment and Community Development.</p>
+        <div class="cert-num">April 2024</div>
+      </div>
+    </div>
+    <!-- COLLABORATION -->
+    <div class="section-header centered fade-in" style="margin-top:64px;">
+      <span class="section-tag">Partnerships</span>
+      <h2 class="section-title">Collaboration <span>Projects</span></h2>
+      <p class="section-desc">Working with partners across Nigeria to empower communities through education and digital inclusion.</p>
+    </div>
+    <div class="collab-card fade-in">
+      <div class="collab-icon"><i class="fas fa-handshake"></i></div>
+      <div class="collab-content">
+        <h4>1st JAMB & Career Counseling Program</h4>
+        <p>Dan Sebo Global Services Ltd partnered with <strong>Pinnacle Hive</strong>, <strong>Khairukum Professional</strong>, and <strong>AIA Foundation</strong> to host the 1st JAMB and Career Counseling at Gashua Community, Yobe State, Nigeria — empowering hundreds of students with digital skills and career guidance.</p>
+        <div class="collab-tags">
+          <span><i class="fas fa-map-marker-alt"></i> Gashua, Yobe State</span>
+          <span><i class="fas fa-users"></i> Pinnacle Hive · Khairukum Professional · AIA Foundation</span>
+          <span><i class="fas fa-graduation-cap"></i> JAMB CBT Training</span>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- CONTACT -->
+<section id="contact">
+  <div class="container">
+    <div class="section-header fade-in">
+      <span class="section-tag">Get In Touch</span>
+      <h2 class="section-title">Let's <span>Work Together</span></h2>
+      <p class="section-desc">Reach out to discuss your project, request a quote, or simply say hello.</p>
+    </div>
+    <div class="contact-grid">
+      <div class="contact-info-block fade-in">
+        <div class="contact-item">
+          <div class="contact-item-icon"><i class="fas fa-map-marker-alt"></i></div>
+          <div><h4>Location</h4><p>Shop No. 52 Alhalal Plaza, Opp. Hamdala Hotel,<br>Waff Road, Kaduna State, Nigeria</p></div>
+        </div>
+        <div class="contact-item">
+          <div class="contact-item-icon"><i class="fab fa-whatsapp"></i></div>
+          <div><h4>WhatsApp / Phone</h4><a href="https://wa.me/2347068383802" target="_blank">+234 706 838 3802</a><br><a href="tel:+2349078265699" style="color:rgba(255,255,255,0.6);font-size:12px;">+234 907 826 5699</a></div>
+        </div>
+        <div class="contact-item">
+          <div class="contact-item-icon"><i class="fas fa-envelope"></i></div>
+          <div><h4>Email</h4><a href="mailto:danseboglobalservices@gmail.com">danseboglobalservices@gmail.com</a></div>
+        </div>
+        <div class="contact-item">
+          <div class="contact-item-icon"><i class="fas fa-clock"></i></div>
+          <div><h4>Working Hours</h4><p>Mon – Fri: 8:00 AM – 6:00 PM<br>Saturday: 9:00 AM – 4:00 PM</p></div>
+        </div>
+        <div class="social-links-block">
+          <h4>Follow Us</h4>
+          <div class="social-row">
+            <a href="https://www.facebook.com/DANSEBO" target="_blank" class="social-btn fb"><i class="fab fa-facebook-f"></i></a>
+            <a href="https://www.instagram.com/DANSEBO.NG" target="_blank" class="social-btn ig"><i class="fab fa-instagram"></i></a>
+            <a href="https://www.tiktok.com/@DANSEBO" target="_blank" class="social-btn tt"><i class="fab fa-tiktok"></i></a>
+            <a href="https://wa.me/2347068383802" target="_blank" class="social-btn wa"><i class="fab fa-whatsapp"></i></a>
+          </div>
+        </div>
+      </div>
+      <div class="contact-form fade-in">
+        <h3>Send a Message</h3>
+        <div class="form-group"><label>Full Name</label><input type="text" id="contactName" placeholder="Your full name"></div>
+        <div class="form-group"><label>Email / Phone</label><input type="text" id="contactEmail" placeholder="Email or phone number"></div>
+        <div class="form-group">
+          <label>Service Needed</label>
+          <select id="contactService">
+            <option value="">Select a service...</option>
+            <option>IT & Digital Solutions</option>
+            <option>Printing & Branding</option>
+            <option>Training & Skills Development</option>
+            <option>General Consultancy</option>
+            <option>ICT Hardware Supply</option>
+            <option>Other</option>
+          </select>
+        </div>
+        <div class="form-group"><label>Message</label><textarea id="contactMessage" placeholder="Tell us about your project..."></textarea></div>
+        <button class="btn-primary" id="sendMessageBtn" style="width:100%;justify-content:center;padding:13px;"><i class="fas fa-paper-plane"></i> Send Message</button>
+        <div id="contactMsg" class="form-msg"></div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- FOOTER -->
+<footer class="site-footer">
+  <div class="container">
+    <div class="footer-grid">
+      <div class="footer-brand">
+        <a href="#home" class="logo-wrap" style="text-decoration:none;margin-bottom:0;">
+          <div class="logo-icon">DS</div>
+          <div class="logo-text-wrap"><span class="logo-name">DanSebo</span><span class="logo-sub">Global Services Ltd</span></div>
+        </a>
+        <p>Empowering businesses, organizations, and individuals through technology, branding, and professional services. Based in Kaduna, Nigeria.</p>
+        <div class="footer-social">
+          <a href="https://www.facebook.com/DANSEBO" target="_blank" class="footer-social-icon"><i class="fab fa-facebook-f"></i></a>
+          <a href="https://www.instagram.com/DANSEBO.NG" target="_blank" class="footer-social-icon"><i class="fab fa-instagram"></i></a>
+          <a href="https://www.tiktok.com/@DANSEBO" target="_blank" class="footer-social-icon"><i class="fab fa-tiktok"></i></a>
+          <a href="https://wa.me/2347068383802" target="_blank" class="footer-social-icon"><i class="fab fa-whatsapp"></i></a>
+        </div>
+      </div>
+      <div class="footer-col">
+        <h5>Quick Links</h5>
+        <a href="#home">Home</a><a href="#services">Services</a><a href="#about">About Us</a>
+        <a href="#team">Our Team</a><a href="#gallery">Gallery</a><a href="#reviews">Reviews</a><a href="#certifications">Certifications</a><a href="#contact">Contact</a>
+      </div>
+      <div class="footer-col">
+        <h5>Services</h5>
+        <a href="#services">IT & Digital Solutions</a><a href="#services">Printing & Branding</a>
+        <a href="#services">Training & Skills</a><a href="#services">Consultancy</a><a href="#services">ICT Hardware</a>
+      </div>
+      <div class="footer-col">
+        <h5>Contact</h5>
+        <a href="https://wa.me/2347068383802" target="_blank"><i class="fab fa-whatsapp" style="color:var(--orange)"></i>+234 706 838 3802</a>
+        <a href="mailto:danseboglobalservices@gmail.com"><i class="fas fa-envelope" style="color:var(--orange)"></i>danseboglobalservices@gmail.com</a>
+        <a href="#contact"><i class="fas fa-map-marker-alt" style="color:var(--orange)"></i>Kaduna, Nigeria</a>
+        <a href="admin.html"><i class="fas fa-lock" style="color:var(--orange)"></i>Admin Panel</a>
+      </div>
+    </div>
+    <div class="footer-bottom">
+      <p>© 2025 <span>DanSebo Global Services Ltd</span> · RC: 84133837 · All rights reserved.</p>
+      <p>Your Vision, <span>Our Expertise</span></p>
+    </div>
+  </div>
+</footer>
+
+<a href="https://wa.me/2347068383802?text=Hello%20DanSebo!" target="_blank" class="fab-whatsapp"><i class="fab fa-whatsapp"></i></a>
+<button id="backToTop" class="back-to-top"><i class="fas fa-chevron-up"></i></button>
+
+<!-- Load Supabase as regular script (no ES module issues) -->
+
+<!-- LIGHTBOX -->
+<div class="lightbox" id="lightbox">
+  <button class="lightbox-close" id="lbClose"><i class="fas fa-times"></i></button>
+  <button class="lightbox-nav lightbox-prev" id="lbPrev"><i class="fas fa-chevron-left"></i></button>
+  <button class="lightbox-nav lightbox-next" id="lbNext"><i class="fas fa-chevron-right"></i></button>
+  <div class="lightbox-inner">
+    <img class="lightbox-img" id="lbImg" src="" alt="">
+    <div class="lightbox-info">
+      <div class="lightbox-title" id="lbTitle"></div>
+      <div class="lightbox-sub" id="lbSub"></div>
+    </div>
+  </div>
+  <div class="lightbox-counter" id="lbCounter"></div>
+</div>
+
+<script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
+<script>
+var SUPABASE_URL      = 'https://ddgwhpwkwpscpjeckxzh.supabase.co';
+var SUPABASE_ANON_KEY = 'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6ImRkZ3docHdrd3BzY3BqZWNreHpoIiwicm9sZSI6ImFub24iLCJpYXQiOjE3Nzk1MTc5ODgsImV4cCI6MjA5NTA5Mzk4OH0.Mae_KDZNBmZ2Yg8hsA5ILojbab_v01n0APRPDgWERRE';
+var sb = supabase.createClient(SUPABASE_URL, SUPABASE_ANON_KEY);
+
+// ── HELPERS ──
+function esc(str) {
+  if (!str) return '';
+  return String(str).replace(/[&<>"']/g, function(m) {
+    return {'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[m];
+  });
+}
+
+function showMsg(id, text, type) {
+  var el = document.getElementById(id);
+  if (!el) return;
+  el.className = 'form-msg ' + type;
+  el.innerText = text;
+  setTimeout(function() { el.className = 'form-msg'; el.innerText = ''; }, 5000);
+}
+
+// ── LIGHTBOX ──
+var lbItems = [];
+var lbIndex = 0;
+
+function openLightbox(items, index) {
+  lbItems = items;
+  lbIndex = index;
+  renderLightbox();
+  document.getElementById('lightbox').classList.add('open');
+  document.body.style.overflow = 'hidden';
+  var hasmany = items.length > 1;
+  document.getElementById('lbPrev').style.display = hasmany ? 'flex' : 'none';
+  document.getElementById('lbNext').style.display = hasmany ? 'flex' : 'none';
+}
+
+function closeLightbox() {
+  document.getElementById('lightbox').classList.remove('open');
+  document.body.style.overflow = '';
+}
+
+function renderLightbox() {
+  var item = lbItems[lbIndex];
+  document.getElementById('lbImg').src     = item.src;
+  document.getElementById('lbImg').alt     = item.title || '';
+  document.getElementById('lbTitle').innerText = item.title || '';
+  document.getElementById('lbSub').innerText   = item.sub   || '';
+  document.getElementById('lbCounter').innerText = lbItems.length > 1 ? (lbIndex + 1) + ' / ' + lbItems.length : '';
+}
+
+document.getElementById('lbClose').onclick = closeLightbox;
+document.getElementById('lightbox').onclick = function(e) {
+  if (e.target === document.getElementById('lightbox')) closeLightbox();
+};
+document.getElementById('lbPrev').onclick = function(e) {
+  e.stopPropagation();
+  lbIndex = (lbIndex - 1 + lbItems.length) % lbItems.length;
+  renderLightbox();
+};
+document.getElementById('lbNext').onclick = function(e) {
+  e.stopPropagation();
+  lbIndex = (lbIndex + 1) % lbItems.length;
+  renderLightbox();
+};
+document.addEventListener('keydown', function(e) {
+  if (!document.getElementById('lightbox').classList.contains('open')) return;
+  if (e.key === 'Escape') closeLightbox();
+  if (e.key === 'ArrowLeft')  { lbIndex = (lbIndex - 1 + lbItems.length) % lbItems.length; renderLightbox(); }
+  if (e.key === 'ArrowRight') { lbIndex = (lbIndex + 1) % lbItems.length; renderLightbox(); }
+});
+
+// ── LOAD LOGO ──
+sb.from('settings').select('value').eq('key','logo_url').single().then(function(res) {
+  if (res.data && res.data.value) {
+    var img = document.getElementById('siteLogo');
+    img.src = res.data.value;
+    img.style.display = 'block';
+    document.getElementById('logoFallback').style.display = 'none';
+  }
+}).catch(function() {});
+
+// ── LOAD TEAM ──
+function loadTeam() {
+  sb.from('team_members').select('*').order('created_at', {ascending: true}).then(function(res) {
+    var data  = res.data;
+    var error = res.error;
+    var grid  = document.getElementById('teamGrid');
+    if (error || !data || !data.length) {
+      grid.innerHTML = '<div class="empty-state"><i class="fas fa-users"></i>No team members added yet.</div>';
+      return;
+    }
+    document.getElementById('teamCount').innerText = data.length;
+
+    var imgItems = [];
+    data.forEach(function(m) {
+      if (m.image_url) imgItems.push({ src: m.image_url, title: m.name, sub: (m.role || '') + (m.dept ? ' · ' + m.dept : '') });
+    });
+
+    var html = '';
+    data.forEach(function(m, i) {
+      var initials = (m.name || '?').split(' ').map(function(w) { return w[0]; }).join('').substring(0, 2).toUpperCase();
+      var avatarHtml = m.image_url
+        ? '<img src="' + esc(m.image_url) + '" alt="' + esc(m.name) + '">'
+        : initials;
+      var isCeo = (m.role || '').toLowerCase().indexOf('ceo') > -1 || (m.role || '').toLowerCase().indexOf('founder') > -1;
+      // Update CEO bio card avatar if this is the CEO and has an image
+      if (isCeo && m.image_url) {
+        var ceoBio = document.getElementById('ceoBioAvatar');
+        if (ceoBio) ceoBio.innerHTML = '<img src="' + esc(m.image_url) + '" alt="' + esc(m.name) + '">';
+      }
+      var hasImg = m.image_url ? true : false;
+      html += '<div class="team-card' + (isCeo ? ' ceo' : '') + '"'
+            + (hasImg ? ' data-img-idx="' + imgItems.findIndex(function(x) { return x.title === m.name; }) + '" style="cursor:zoom-in;"' : '')
+            + '>'
+            + '<div class="team-avatar">' + avatarHtml + '</div>'
+            + '<h3>' + esc(m.name) + '</h3>'
+            + '<div class="role">' + esc(m.role || '') + '</div>'
+            + '<div class="dept">' + esc(m.dept || '') + '</div>'
+            + (hasImg ? '<div style="font-size:10px;color:rgba(255,255,255,0.25);margin-top:8px;"><i class="fas fa-expand-alt"></i> tap to view</div>' : '')
+            + '</div>';
+    });
+    grid.innerHTML = html;
+
+    if (imgItems.length > 0) {
+      grid.querySelectorAll('.team-card[data-img-idx]').forEach(function(el) {
+        el.addEventListener('click', function() {
+          var idx = parseInt(el.getAttribute('data-img-idx'));
+          if (idx >= 0) openLightbox(imgItems, idx);
+        });
+      });
+    }
+  });
+}
+
+// ── LOAD GALLERY ──
+function loadGallery() {
+  sb.from('gallery').select('*').order('created_at', {ascending: false}).then(function(res) {
+    var data  = res.data;
+    var error = res.error;
+    var grid  = document.getElementById('galleryGrid');
+    if (error || !data || !data.length) {
+      grid.innerHTML = '<div class="empty-state" style="grid-column:1/-1"><i class="fas fa-images"></i>No gallery items yet.</div>';
+      return;
+    }
+
+    var imgItems = [];
+    data.forEach(function(g) {
+      if (g.image_url) imgItems.push({ src: g.image_url, title: g.title, sub: g.category || '' });
+    });
+
+    var html = '';
+    data.forEach(function(g, i) {
+      var imgIdx = imgItems.findIndex(function(x) { return x.title === g.title; });
+      html += '<div class="gallery-item"'
+            + (g.image_url ? ' data-img-idx="' + imgIdx + '"' : '')
+            + '>'
+            + (g.image_url
+                ? '<img src="' + esc(g.image_url) + '" alt="' + esc(g.title) + '" loading="lazy">'
+                : '<div class="gallery-placeholder"><i class="fas fa-image"></i><span>' + esc(g.title) + '</span></div>')
+            + '<div class="gallery-overlay">'
+            + (g.category ? '<span class="gallery-cat">' + esc(g.category) + '</span>' : '')
+            + '<span>' + esc(g.title) + '</span>'
+            + (g.image_url ? '<span style="display:block;font-size:10px;color:var(--orange);margin-top:4px;"><i class="fas fa-expand-alt"></i> Click to view full</span>' : '')
+            + '</div></div>';
+    });
+    grid.innerHTML = html;
+
+    if (imgItems.length > 0) {
+      grid.querySelectorAll('.gallery-item[data-img-idx]').forEach(function(el) {
+        el.addEventListener('click', function() {
+          var idx = parseInt(el.getAttribute('data-img-idx'));
+          if (idx >= 0) openLightbox(imgItems, idx);
+        });
+      });
+    }
+  });
+}
+
+// ── LOAD REVIEWS ──
+function loadReviews() {
+  sb.from('reviews').select('*').order('created_at', {ascending: false}).limit(12).then(function(res) {
+    var data  = res.data;
+    var error = res.error;
+    var list  = document.getElementById('reviewsList');
+    if (error || !data || !data.length) {
+      list.innerHTML = '<div class="empty-state" style="grid-column:1/-1"><i class="fas fa-comment-slash"></i>No reviews yet. Be the first!</div>';
+      return;
+    }
+    var html = '';
+    data.forEach(function(r) {
+      html += '<div class="review-card">'
+            + '<div class="review-stars">★★★★★</div>'
+            + '<p class="review-text">"' + esc(r.text) + '"</p>'
+            + '<div class="review-author">'
+            + '<div class="review-avatar">' + (r.name || '?')[0].toUpperCase() + '</div>'
+            + '<div><div class="review-name">' + esc(r.name) + '</div>'
+            + '<div class="review-date">' + (r.org ? esc(r.org) + ' · ' : '') + esc(r.date || '') + '</div>'
+            + '</div></div></div>';
+    });
+    list.innerHTML = html;
+  });
+}
+
+// ── SUBMIT REVIEW ──
+document.getElementById('submitReviewBtn').addEventListener('click', function() {
+  var name = (document.getElementById('reviewName').value || '').trim();
+  var org  = (document.getElementById('reviewOrg').value  || '').trim();
+  var text = (document.getElementById('reviewText').value || '').trim();
+  if (!name || !text) { showMsg('reviewMsg', 'Please enter your name and review.', 'error'); return; }
+  sb.from('reviews').insert([{ name: name, org: org, text: text, date: new Date().toLocaleDateString(), created_at: new Date().toISOString() }]).then(function(res) {
+    if (res.error) { showMsg('reviewMsg', 'Error: ' + res.error.message, 'error'); return; }
+    showMsg('reviewMsg', '✅ Thank you for your review!', 'success');
+    document.getElementById('reviewName').value = '';
+    document.getElementById('reviewOrg').value  = '';
+    document.getElementById('reviewText').value = '';
+    loadReviews();
+  });
+});
+
+// ── SEND MESSAGE ──
+document.getElementById('sendMessageBtn').addEventListener('click', function() {
+  var name    = (document.getElementById('contactName').value    || '').trim();
+  var email   = (document.getElementById('contactEmail').value   || '').trim();
+  var service = document.getElementById('contactService').value;
+  var message = (document.getElementById('contactMessage').value || '').trim();
+  if (!name || !email || !message) { showMsg('contactMsg', 'Please fill in all required fields.', 'error'); return; }
+  sb.from('messages').insert([{ name: name, email: email, service: service, message: message, created_at: new Date().toISOString() }]).then(function(res) {
+    if (res.error) {
+      var wa = 'Hello DanSebo! My name is ' + name + '. Service: ' + (service || 'General') + '. Message: ' + message + '. Contact: ' + email;
+      window.open('https://wa.me/2347068383802?text=' + encodeURIComponent(wa), '_blank');
+      return;
+    }
+    showMsg('contactMsg', '✅ Message sent! We will get back to you shortly.', 'success');
+    document.getElementById('contactName').value    = '';
+    document.getElementById('contactEmail').value   = '';
+    document.getElementById('contactService').value = '';
+    document.getElementById('contactMessage').value = '';
+  });
+});
+
+// ── MOBILE NAV ──
+document.getElementById('hamburgerBtn').addEventListener('click', function() {
+  document.getElementById('mainNav').classList.toggle('open');
+});
+document.getElementById('mainNav').querySelectorAll('a').forEach(function(a) {
+  a.addEventListener('click', function() { document.getElementById('mainNav').classList.remove('open'); });
+});
+
+// ── BACK TO TOP ──
+var btt = document.getElementById('backToTop');
+window.addEventListener('scroll', function() { btt.classList.toggle('visible', window.scrollY > 400); });
+btt.addEventListener('click', function() { window.scrollTo({ top: 0, behavior: 'smooth' }); });
+
+// ── FADE IN ──
+var observer = new IntersectionObserver(function(entries) {
+  entries.forEach(function(e) { if (e.isIntersecting) e.target.classList.add('visible'); });
+}, { threshold: 0.1 });
+document.querySelectorAll('.fade-in').forEach(function(el) { observer.observe(el); });
+
+// ── ACTIVE NAV ──
+var sections = document.querySelectorAll('section[id]');
+window.addEventListener('scroll', function() {
+  var current = '';
+  sections.forEach(function(s) { if (window.scrollY >= s.offsetTop - 100) current = s.id; });
+  document.querySelectorAll('.main-nav a').forEach(function(a) {
+    a.classList.toggle('active', a.getAttribute('href') === '#' + current);
+  });
+});
+
+// ── INIT ──
+loadTeam();
+loadGallery();
+loadReviews();
+</script>
+</body>
+</html>

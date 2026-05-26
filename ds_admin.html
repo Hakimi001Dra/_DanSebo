@@ -1,0 +1,515 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Admin Panel | DanSebo Global Services Ltd</title>
+  <link href="https://fonts.googleapis.com/css2?family=Syne:wght@600;700;800&family=DM+Sans:wght@300;400;500;600&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+  <style>
+    :root{--navy:#0f1e3d;--navy-light:#1a2f5a;--navy-dark:#080f1f;--orange:#e8651a;--orange-dark:#c4520d;--border:rgba(255,255,255,0.08);}
+    *,*::before,*::after{margin:0;padding:0;box-sizing:border-box;}
+    body{background:var(--navy-dark);color:#fff;font-family:'DM Sans',sans-serif;min-height:100vh;}
+    .topbar{background:rgba(8,15,31,0.97);border-bottom:1px solid var(--border);padding:14px 28px;display:flex;align-items:center;justify-content:space-between;position:sticky;top:0;z-index:100;}
+    .topbar-brand{font-family:'Syne',sans-serif;font-weight:800;font-size:1.1rem;color:var(--orange);}
+    .topbar-right{display:flex;align-items:center;gap:14px;}
+    .topbar-user{font-size:12px;color:rgba(255,255,255,0.4);}
+    .btn{display:inline-flex;align-items:center;gap:7px;padding:10px 20px;border:none;border-radius:10px;font-size:13px;font-weight:600;cursor:pointer;transition:0.2s;font-family:'DM Sans',sans-serif;}
+    .btn-orange{background:var(--orange);color:#fff;}.btn-orange:hover{background:var(--orange-dark);}
+    .btn-orange:disabled{opacity:0.5;cursor:not-allowed;}
+    .btn-ghost{background:rgba(255,255,255,0.05);color:#fff;border:1px solid var(--border);}.btn-ghost:hover{border-color:var(--orange);color:var(--orange);}
+    .btn-danger{background:rgba(200,0,0,0.15);color:#ff8888;border:1px solid rgba(200,0,0,0.2);}.btn-danger:hover{background:rgba(200,0,0,0.3);}
+    .btn-sm{padding:7px 14px;font-size:12px;}.btn-full{width:100%;justify-content:center;}
+    .back-link{color:rgba(255,255,255,0.4);font-size:13px;text-decoration:none;display:flex;align-items:center;gap:6px;}.back-link:hover{color:var(--orange);}
+    .page{max-width:1100px;margin:0 auto;padding:32px 24px;}
+    .auth-wrap{display:flex;align-items:center;justify-content:center;min-height:85vh;}
+    .auth-card{background:rgba(255,255,255,0.03);border:1px solid var(--border);border-radius:24px;padding:40px;width:100%;max-width:400px;}
+    .auth-card h2{font-family:'Syne',sans-serif;color:var(--orange);font-size:1.5rem;margin-bottom:6px;}
+    .auth-card p{color:rgba(255,255,255,0.4);font-size:13px;margin-bottom:28px;}
+    input,textarea,select{width:100%;padding:12px 16px;background:rgba(255,255,255,0.05);border:1px solid var(--border);border-radius:10px;color:#fff;font-family:'DM Sans',sans-serif;font-size:14px;outline:none;transition:0.2s;margin-bottom:12px;}
+    input:focus,textarea:focus,select:focus{border-color:var(--orange);}
+    textarea{border-radius:12px;resize:vertical;}
+    input[type=file]{padding:9px 14px;cursor:pointer;}
+    .stats-row{display:grid;grid-template-columns:repeat(auto-fit,minmax(160px,1fr));gap:16px;margin-bottom:28px;}
+    .stat-card{background:rgba(255,255,255,0.03);border:1px solid var(--border);border-radius:16px;padding:20px 24px;}
+    .stat-num{font-family:'Syne',sans-serif;font-size:2rem;font-weight:800;color:var(--orange);}
+    .stat-label{font-size:12px;color:rgba(255,255,255,0.4);margin-top:3px;}
+    .tabs{display:flex;flex-wrap:wrap;gap:4px;background:rgba(255,255,255,0.03);border:1px solid var(--border);border-radius:14px;padding:4px;width:fit-content;margin-bottom:24px;}
+    .tab{padding:9px 18px;border-radius:10px;font-size:13px;font-weight:500;cursor:pointer;background:transparent;border:none;color:rgba(255,255,255,0.5);transition:0.2s;}
+    .tab.active{background:var(--orange);color:#fff;}
+    .panel-card{background:rgba(255,255,255,0.03);border:1px solid var(--border);border-radius:20px;padding:28px;margin-bottom:20px;}
+    .panel-card h3{font-size:14px;font-weight:600;color:var(--orange);margin-bottom:20px;display:flex;align-items:center;gap:8px;}
+    .data-table{width:100%;border-collapse:collapse;}
+    .data-table th{text-align:left;font-size:11px;letter-spacing:1px;color:rgba(255,255,255,0.35);padding:0 12px 12px;border-bottom:1px solid var(--border);}
+    .data-table td{padding:14px 12px;border-bottom:1px solid rgba(255,255,255,0.04);font-size:13px;vertical-align:middle;}
+    .data-table tr:last-child td{border-bottom:none;}
+    .data-table tr:hover td{background:rgba(255,255,255,0.02);}
+    .actions-cell{display:flex;gap:8px;}
+    .msg{padding:10px 16px;border-radius:10px;font-size:13px;text-align:center;margin-top:10px;display:none;}
+    .msg.success{background:rgba(0,200,0,0.1);color:#88ff88;display:block;}
+    .msg.error{background:rgba(200,0,0,0.1);color:#ff8888;display:block;}
+    .msg.info{background:rgba(0,100,255,0.1);color:#88aaff;display:block;}
+    .modal-overlay{display:none;position:fixed;inset:0;background:rgba(0,0,0,0.85);z-index:500;align-items:center;justify-content:center;padding:20px;}
+    .modal-overlay.open{display:flex;}
+    .modal-box{background:var(--navy-light);border:1px solid var(--border);border-radius:24px;padding:32px;width:100%;max-width:500px;position:relative;max-height:90vh;overflow-y:auto;}
+    .modal-box h3{font-family:'Syne',sans-serif;color:var(--orange);font-size:1.1rem;margin-bottom:20px;}
+    .modal-close-btn{position:absolute;top:18px;right:22px;background:transparent;border:none;color:rgba(255,255,255,0.4);font-size:20px;cursor:pointer;}
+    .modal-close-btn:hover{color:white;}
+    .empty{text-align:center;padding:48px;color:rgba(255,255,255,0.25);}
+    .empty i{font-size:2rem;margin-bottom:12px;display:block;}
+    .img-preview{display:none;margin-bottom:12px;}
+    .img-preview img{max-width:100%;max-height:160px;border-radius:12px;object-fit:cover;}
+  </style>
+</head>
+<body>
+
+<div class="topbar">
+  <div style="display:flex;align-items:center;gap:20px;">
+    <a href="index.html" class="back-link"><i class="fas fa-arrow-left"></i> Website</a>
+    <span class="topbar-brand">DanSebo Admin</span>
+  </div>
+  <div class="topbar-right" id="topbarRight" style="display:none;">
+    <span class="topbar-user" id="topbarEmail"></span>
+    <button class="btn btn-ghost btn-sm" id="logoutBtn"><i class="fas fa-sign-out-alt"></i> Logout</button>
+  </div>
+</div>
+
+<div id="authScreen">
+  <div class="auth-wrap">
+    <div class="auth-card">
+      <h2>Admin Login</h2>
+      <p>Sign in to manage DanSebo's website content.</p>
+      <input type="email" id="adminEmail" placeholder="Admin email">
+      <input type="password" id="adminPassword" placeholder="Password">
+      <button class="btn btn-orange btn-full" id="loginBtn"><i class="fas fa-lock"></i> Sign In</button>
+      <div id="loginMsg" class="msg"></div>
+    </div>
+  </div>
+</div>
+
+<div id="adminPanel" style="display:none;">
+  <div class="page">
+    <div class="stats-row">
+      <div class="stat-card"><div class="stat-num" id="statReviews">—</div><div class="stat-label">Reviews</div></div>
+      <div class="stat-card"><div class="stat-num" id="statMessages">—</div><div class="stat-label">Messages</div></div>
+      <div class="stat-card"><div class="stat-num" id="statSubscribers">—</div><div class="stat-label">Subscribers</div></div>
+      <div class="stat-card"><div class="stat-num" id="statGallery">—</div><div class="stat-label">Gallery Items</div></div>
+      <div class="stat-card"><div class="stat-num" id="statTeam">—</div><div class="stat-label">Team Members</div></div>
+    </div>
+    <div class="tabs">
+      <button class="tab active" id="tab-btn-reviews" onclick="switchTab('reviews')"><i class="fas fa-star"></i> Reviews</button>
+      <button class="tab" id="tab-btn-messages" onclick="switchTab('messages')"><i class="fas fa-envelope"></i> Messages</button>
+      <button class="tab" id="tab-btn-subscribers" onclick="switchTab('subscribers')"><i class="fas fa-bell"></i> Subscribers</button>
+      <button class="tab" id="tab-btn-gallery" onclick="switchTab('gallery')"><i class="fas fa-images"></i> Gallery</button>
+      <button class="tab" id="tab-btn-team" onclick="switchTab('team')"><i class="fas fa-users"></i> Team</button>
+      <button class="tab" id="tab-btn-settings" onclick="switchTab('settings')"><i class="fas fa-cog"></i> Settings</button>
+    </div>
+
+    <div id="tab-reviews">
+      <div class="panel-card"><h3><i class="fas fa-star"></i> Customer Reviews</h3><div id="reviewsWrap"><div class="empty"><i class="fas fa-spinner fa-spin"></i>Loading...</div></div></div>
+    </div>
+    <div id="tab-messages" style="display:none;">
+      <div class="panel-card"><h3><i class="fas fa-envelope"></i> Contact Messages</h3><div id="messagesWrap"><div class="empty"><i class="fas fa-spinner fa-spin"></i>Loading...</div></div></div>
+    </div>
+    <div id="tab-subscribers" style="display:none;">
+      <div class="panel-card"><h3><i class="fas fa-bell"></i> Subscribers</h3><div id="subscribersWrap"><div class="empty"><i class="fas fa-spinner fa-spin"></i>Loading...</div></div></div>
+    </div>
+    <div id="tab-gallery" style="display:none;">
+      <div class="panel-card">
+        <h3><i class="fas fa-plus-circle"></i> Add Gallery Item</h3>
+        <input type="text" id="galleryTitle" placeholder="Title">
+        <input type="text" id="galleryCategory" placeholder="Category">
+        <input type="file" id="galleryImage" accept="image/*">
+        <div class="img-preview" id="galleryPreview"><img id="galleryPreviewImg" alt="preview"></div>
+        <button class="btn btn-orange" id="addGalleryBtn"><i class="fas fa-upload"></i> Upload</button>
+        <div id="galleryUploadMsg" class="msg"></div>
+      </div>
+      <div class="panel-card"><h3><i class="fas fa-images"></i> All Gallery Items</h3><div id="galleryWrap"><div class="empty"><i class="fas fa-spinner fa-spin"></i>Loading...</div></div></div>
+    </div>
+    <div id="tab-team" style="display:none;">
+      <div class="panel-card">
+        <h3><i class="fas fa-user-plus"></i> Add / Edit Team Member</h3>
+        <input type="hidden" id="editingTeamId">
+        <input type="text" id="teamName" placeholder="Full name">
+        <input type="text" id="teamRole" placeholder="Role e.g. CEO, Designer">
+        <input type="text" id="teamDept" placeholder="Department">
+        <input type="file" id="teamImage" accept="image/*">
+        <div class="img-preview" id="teamPreview"><img id="teamPreviewImg" alt="preview"></div>
+        <div style="display:flex;gap:10px;">
+          <button class="btn btn-orange" id="saveTeamBtn"><i class="fas fa-save"></i> Save Member</button>
+          <button class="btn btn-ghost" id="cancelTeamBtn" style="display:none;"><i class="fas fa-times"></i> Cancel</button>
+        </div>
+        <div id="teamMsg" class="msg"></div>
+      </div>
+      <div class="panel-card"><h3><i class="fas fa-users"></i> Team Members</h3><div id="teamWrap"><div class="empty"><i class="fas fa-spinner fa-spin"></i>Loading...</div></div></div>
+    </div>
+    <div id="tab-settings" style="display:none;">
+      <div class="panel-card">
+        <h3><i class="fas fa-building"></i> Company Logo</h3>
+        <input type="file" id="logoImage" accept="image/*">
+        <div class="img-preview" id="logoPreview"><img id="logoPreviewImg" alt="logo preview"></div>
+        <button class="btn btn-orange" id="saveLogoBtn"><i class="fas fa-save"></i> Save Logo</button>
+        <div id="settingsMsg" class="msg"></div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<div class="modal-overlay" id="deleteModal">
+  <div class="modal-box" style="max-width:380px;text-align:center;">
+    <button class="modal-close-btn" onclick="closeDeleteModal()"><i class="fas fa-times"></i></button>
+    <i class="fas fa-exclamation-triangle" style="font-size:2.5rem;color:var(--orange);margin-bottom:16px;display:block;"></i>
+    <h3 style="margin-bottom:8px;">Confirm Delete</h3>
+    <p style="color:rgba(255,255,255,0.5);font-size:13px;margin-bottom:24px;" id="deleteConfirmText">Are you sure?</p>
+    <div style="display:flex;gap:12px;">
+      <button class="btn btn-danger btn-full" id="confirmDeleteBtn"><i class="fas fa-trash"></i> Delete</button>
+      <button class="btn btn-ghost btn-full" onclick="closeDeleteModal()">Cancel</button>
+    </div>
+    <div id="deleteMsg" class="msg"></div>
+  </div>
+</div>
+
+<!-- Load Supabase first as a regular script, then init everything -->
+<script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
+<script>
+  const SUPABASE_URL      = 'https://ddgwhpwkwpscpjeckxzh.supabase.co'
+  const SUPABASE_ANON_KEY = 'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6ImRkZ3docHdrd3BzY3BqZWNreHpoIiwicm9sZSI6ImFub24iLCJpYXQiOjE3Nzk1MTc5ODgsImV4cCI6MjA5NTA5Mzk4OH0.Mae_KDZNBmZ2Yg8hsA5ILojbab_v01n0APRPDgWERRE'
+
+  const { createClient } = supabase
+  const sb = createClient(SUPABASE_URL, SUPABASE_ANON_KEY)
+
+  let currentUser = null
+  let deleteTarget = {}
+
+  // ── EXPOSE GLOBALS ──
+  function switchTab(name) {
+    ['reviews','messages','subscribers','gallery','team','settings'].forEach(t => {
+      document.getElementById('tab-' + t).style.display = t === name ? 'block' : 'none'
+      document.getElementById('tab-btn-' + t).classList.toggle('active', t === name)
+    })
+  }
+
+  function closeDeleteModal() {
+    document.getElementById('deleteModal').classList.remove('open')
+    deleteTarget = {}
+  }
+
+  // Safe delete handler using data attributes (avoids quote escaping issues)
+  function handleDelete(btn) {
+    var table    = btn.getAttribute('data-table');
+    var id       = btn.getAttribute('data-id');
+    var label    = btn.getAttribute('data-label');
+    var imageUrl = btn.getAttribute('data-img') || '';
+    confirmDelete(table, id, label, imageUrl);
+  }
+
+  function confirmDelete(table, id, label, imageUrl) {
+    deleteTarget = { table, id, imageUrl }
+    document.getElementById('deleteConfirmText').innerText = 'Delete "' + label + '"? This cannot be undone.'
+    document.getElementById('deleteMsg').className = 'msg'
+    document.getElementById('deleteModal').classList.add('open')
+  }
+
+  function editTeamMember(id) {
+    sb.from('team_members').select('*').eq('id', id).single().then(({ data, error }) => {
+      if (error || !data) return showMsg('teamMsg', 'Could not load member.', 'error')
+      document.getElementById('editingTeamId').value = id
+      document.getElementById('teamName').value = data.name || ''
+      document.getElementById('teamRole').value = data.role || ''
+      document.getElementById('teamDept').value = data.dept || ''
+      if (data.image_url) {
+        document.getElementById('teamPreviewImg').src = data.image_url
+        document.getElementById('teamPreview').style.display = 'block'
+      }
+      document.getElementById('cancelTeamBtn').style.display = 'inline-flex'
+      showMsg('teamMsg', 'Editing member. Upload a new photo to replace image.', 'info')
+      switchTab('team')
+    })
+  }
+
+  function showMsg(id, text, type) {
+    const el = document.getElementById(id)
+    if (!el) return
+    el.className = 'msg ' + type
+    el.innerText = text
+  }
+
+  function esc(str) {
+    if (!str) return ''
+    return String(str).replace(/[&<>"']/g, m => ({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'})[m])
+  }
+
+  // ── SHOW / HIDE PANEL ──
+  function showPanel() {
+    document.getElementById('authScreen').style.display = 'none'
+    document.getElementById('adminPanel').style.display = 'block'
+    document.getElementById('topbarRight').style.display = 'flex'
+    document.getElementById('topbarEmail').innerText = currentUser.email
+    loadAll()
+  }
+
+  function showAuth() {
+    document.getElementById('authScreen').style.display = 'block'
+    document.getElementById('adminPanel').style.display = 'none'
+    document.getElementById('topbarRight').style.display = 'none'
+  }
+
+  // ── LOGIN ──
+  document.getElementById('loginBtn').addEventListener('click', function() {
+    const email = document.getElementById('adminEmail').value.trim()
+    const pass  = document.getElementById('adminPassword').value
+    if (!email || !pass) { showMsg('loginMsg', 'Fill in all fields.', 'error'); return }
+    showMsg('loginMsg', 'Signing in...', 'info')
+    sb.auth.signInWithPassword({ email, password: pass }).then(function({ data, error }) {
+      if (error) { showMsg('loginMsg', 'Login failed: ' + error.message, 'error'); return }
+      currentUser = data.user
+      showPanel()
+    })
+  })
+
+  document.getElementById('adminPassword').addEventListener('keydown', function(e) {
+    if (e.key === 'Enter') document.getElementById('loginBtn').click()
+  })
+
+  // ── LOGOUT ──
+  document.getElementById('logoutBtn').addEventListener('click', function() {
+    sb.auth.signOut().then(showAuth)
+  })
+
+  // ── DELETE CONFIRM ──
+  document.getElementById('confirmDeleteBtn').addEventListener('click', function() {
+    const btn = document.getElementById('confirmDeleteBtn')
+    btn.disabled = true
+    showMsg('deleteMsg', 'Deleting...', 'info')
+    sb.from(deleteTarget.table).delete().eq('id', deleteTarget.id).then(function({ error }) {
+      if (error) { showMsg('deleteMsg', '❌ ' + error.message, 'error'); btn.disabled = false; return }
+      if (deleteTarget.imageUrl) {
+        const parts = deleteTarget.imageUrl.split('/gallery-images/')
+        if (parts[1]) sb.storage.from('gallery-images').remove([parts[1]])
+      }
+      btn.disabled = false
+      closeDeleteModal()
+      loadAll()
+    })
+  })
+
+  document.getElementById('deleteModal').addEventListener('click', function(e) {
+    if (e.target === document.getElementById('deleteModal')) closeDeleteModal()
+  })
+
+  // ── LOAD ALL ──
+  function loadAll() {
+    loadStats()
+    loadReviews()
+    loadMessages()
+    loadSubscribers()
+    loadGallery()
+    loadTeam()
+  }
+
+  function loadStats() {
+    Promise.all([
+      sb.from('reviews').select('id', {count:'exact', head:true}),
+      sb.from('messages').select('id', {count:'exact', head:true}),
+      sb.from('subscribers').select('id', {count:'exact', head:true}),
+      sb.from('gallery').select('id', {count:'exact', head:true}),
+      sb.from('team_members').select('id', {count:'exact', head:true}),
+    ]).then(function([r, m, s, g, t]) {
+      document.getElementById('statReviews').innerText     = r.count ?? '—'
+      document.getElementById('statMessages').innerText    = m.count ?? '—'
+      document.getElementById('statSubscribers').innerText = s.count ?? '—'
+      document.getElementById('statGallery').innerText     = g.count ?? '—'
+      document.getElementById('statTeam').innerText        = t.count ?? '—'
+    })
+  }
+
+  function loadReviews() {
+    sb.from('reviews').select('*').order('created_at', {ascending:false}).then(function(res) {
+      var data = res.data;
+      var wrap = document.getElementById('reviewsWrap');
+      if (!data || !data.length) { wrap.innerHTML = '<div class="empty"><i class="fas fa-comment-slash"></i>No reviews yet.</div>'; return; }
+      var rows = '';
+      data.forEach(function(r) {
+        var safeName = (r.name || '').replace(/'/g, '').replace(/"/g, '');
+        rows += '<tr>'
+          + '<td><strong>' + esc(r.name) + '</strong></td>'
+          + '<td>' + esc(r.org || '—') + '</td>'
+          + '<td style="max-width:240px;color:rgba(255,255,255,0.6);">' + esc((r.text||'').substring(0,80)) + ((r.text||'').length>80?'...':'') + '</td>'
+          + '<td style="font-size:12px;color:rgba(255,255,255,0.35);">' + (r.date||'') + '</td>'
+          + '<td><button class="btn btn-danger btn-sm" data-id="' + r.id + '" data-label="Review by ' + safeName + '" data-table="reviews" onclick="handleDelete(this)"><i class="fas fa-trash"></i></button></td>'
+          + '</tr>';
+      });
+      wrap.innerHTML = '<table class="data-table"><thead><tr><th>Name</th><th>Org</th><th>Review</th><th>Date</th><th></th></tr></thead><tbody>' + rows + '</tbody></table>';
+    });
+  }
+
+  function loadMessages() {
+    sb.from('messages').select('*').order('created_at', {ascending:false}).then(function({ data }) {
+      const wrap = document.getElementById('messagesWrap')
+      if (!data || !data.length) { wrap.innerHTML = '<div class="empty"><i class="fas fa-inbox"></i>No messages yet.</div>'; return }
+      wrap.innerHTML = '<table class="data-table"><thead><tr><th>Name</th><th>Contact</th><th>Service</th><th>Message</th><th></th></tr></thead><tbody>' +
+        data.map(function(m) { return '<tr><td><strong>' + esc(m.name) + '</strong></td><td style="font-size:12px;color:rgba(255,255,255,0.5);">' + esc(m.email||'') + '</td><td><span style="background:rgba(232,101,26,0.15);color:var(--orange);padding:3px 8px;border-radius:6px;font-size:11px;">' + esc(m.service||'—') + '</span></td><td style="max-width:200px;font-size:12px;color:rgba(255,255,255,0.6);">' + esc((m.message||'').substring(0,70)) + '</td><td><div class="actions-cell"><a href="https://wa.me/2347068383802" target="_blank" class="btn btn-ghost btn-sm"><i class="fab fa-whatsapp"></i></a><button class="btn btn-danger btn-sm" onclick="confirmDelete(\'messages\',\'' + m.id + '\',\'message from ' + esc(m.name) + '\')"><i class="fas fa-trash"></i></button></div></td></tr>' }).join('') +
+        '</tbody></table>'
+    })
+  }
+
+  function loadSubscribers() {
+    sb.from('subscribers').select('*').order('created_at', {ascending:false}).then(function({ data }) {
+      const wrap = document.getElementById('subscribersWrap')
+      if (!data || !data.length) { wrap.innerHTML = '<div class="empty"><i class="fas fa-bell-slash"></i>No subscribers yet.</div>'; return }
+      wrap.innerHTML = '<table class="data-table"><thead><tr><th>Email</th><th>Date</th><th></th></tr></thead><tbody>' +
+        data.map(function(s) { return '<tr><td>' + esc(s.email) + '</td><td style="font-size:12px;color:rgba(255,255,255,0.35);">' + new Date(s.created_at).toLocaleDateString() + '</td><td><button class="btn btn-danger btn-sm" onclick="confirmDelete(\'subscribers\',\'' + s.id + '\',\'' + esc(s.email) + '\')"><i class="fas fa-trash"></i></button></td></tr>' }).join('') +
+        '</tbody></table>'
+    })
+  }
+
+  // ── GALLERY ──
+  document.getElementById('galleryImage').addEventListener('change', function(e) {
+    const file = e.target.files[0]
+    if (file) { const r = new FileReader(); r.onload = function(ev) { document.getElementById('galleryPreviewImg').src = ev.target.result; document.getElementById('galleryPreview').style.display='block' }; r.readAsDataURL(file) }
+    else document.getElementById('galleryPreview').style.display = 'none'
+  })
+
+  document.getElementById('addGalleryBtn').addEventListener('click', function() {
+    const title    = document.getElementById('galleryTitle').value.trim()
+    const category = document.getElementById('galleryCategory').value.trim()
+    const file     = document.getElementById('galleryImage').files[0]
+    const btn      = document.getElementById('addGalleryBtn')
+    if (!title || !file) { showMsg('galleryUploadMsg', 'Enter a title and choose an image.', 'error'); return }
+    btn.disabled = true
+    showMsg('galleryUploadMsg', 'Uploading...', 'info')
+    const ext  = file.name.split('.').pop().toLowerCase()
+    const path = Date.now() + '-' + Math.random().toString(36).slice(2) + '.' + ext
+    sb.storage.from('gallery-images').upload(path, file, { cacheControl:'3600', upsert:false }).then(function({ error: upErr }) {
+      if (upErr) { showMsg('galleryUploadMsg', '❌ ' + upErr.message, 'error'); btn.disabled = false; return }
+      const publicUrl = sb.storage.from('gallery-images').getPublicUrl(path).data.publicUrl
+      sb.from('gallery').insert([{ title, category, image_url: publicUrl, created_at: new Date().toISOString() }]).then(function({ error: insErr }) {
+        if (insErr) { showMsg('galleryUploadMsg', '❌ ' + insErr.message, 'error'); btn.disabled = false; return }
+        showMsg('galleryUploadMsg', '✅ Gallery item added!', 'success')
+        document.getElementById('galleryTitle').value = ''
+        document.getElementById('galleryCategory').value = ''
+        document.getElementById('galleryImage').value = ''
+        document.getElementById('galleryPreview').style.display = 'none'
+        btn.disabled = false
+        loadGallery(); loadStats()
+      })
+    })
+  })
+
+  function loadGallery() {
+    sb.from('gallery').select('*').order('created_at', {ascending:false}).then(function({ data }) {
+      const wrap = document.getElementById('galleryWrap')
+      if (!data || !data.length) { wrap.innerHTML = '<div class="empty"><i class="fas fa-images"></i>No gallery items yet.</div>'; return }
+      wrap.innerHTML = '<table class="data-table"><thead><tr><th>Image</th><th>Title</th><th>Category</th><th></th></tr></thead><tbody>' +
+        data.map(function(g) { return '<tr><td><img src="' + esc(g.image_url) + '" style="width:52px;height:52px;object-fit:cover;border-radius:10px;" onerror="this.src=\'https://placehold.co/52x52/0f1e3d/e8651a?text=?\'" ></td><td><strong>' + esc(g.title) + '</strong></td><td><span style="background:rgba(232,101,26,0.15);color:var(--orange);padding:3px 8px;border-radius:6px;font-size:11px;">' + esc(g.category||'—') + '</span></td><td><button class="btn btn-danger btn-sm" onclick="confirmDelete(\'gallery\',\'' + g.id + '\',\'' + esc(g.title) + '\',\'' + esc(g.image_url) + '\')"><i class="fas fa-trash"></i></button></td></tr>' }).join('') +
+        '</tbody></table>'
+    })
+  }
+
+  // ── TEAM ──
+  document.getElementById('teamImage').addEventListener('change', function(e) {
+    const file = e.target.files[0]
+    if (file) { const r = new FileReader(); r.onload = function(ev) { document.getElementById('teamPreviewImg').src = ev.target.result; document.getElementById('teamPreview').style.display='block' }; r.readAsDataURL(file) }
+    else document.getElementById('teamPreview').style.display = 'none'
+  })
+
+  document.getElementById('saveTeamBtn').addEventListener('click', function() {
+    const editId = document.getElementById('editingTeamId').value
+    const name   = document.getElementById('teamName').value.trim()
+    const role   = document.getElementById('teamRole').value.trim()
+    const dept   = document.getElementById('teamDept').value.trim()
+    const file   = document.getElementById('teamImage').files[0]
+    const btn    = document.getElementById('saveTeamBtn')
+    if (!name || !role || !dept) { showMsg('teamMsg', 'Name, role and department required.', 'error'); return }
+    btn.disabled = true; showMsg('teamMsg', 'Saving...', 'info')
+
+    function doSave(image_url) {
+      if (editId) {
+        const payload = { name, role, dept, updated_at: new Date().toISOString() }
+        if (image_url) payload.image_url = image_url
+        sb.from('team_members').update(payload).eq('id', editId).then(function({ error }) {
+          btn.disabled = false
+          if (error) { showMsg('teamMsg', '❌ ' + error.message, 'error'); return }
+          showMsg('teamMsg', '✅ Member updated!', 'success')
+          clearTeamForm(); loadTeam(); loadStats()
+        })
+      } else {
+        const payload = { name, role, dept, created_at: new Date().toISOString() }
+        if (image_url) payload.image_url = image_url
+        sb.from('team_members').insert([payload]).then(function({ error }) {
+          btn.disabled = false
+          if (error) { showMsg('teamMsg', '❌ ' + error.message, 'error'); return }
+          showMsg('teamMsg', '✅ Member added!', 'success')
+          clearTeamForm(); loadTeam(); loadStats()
+        })
+      }
+    }
+
+    if (file) {
+      const ext  = file.name.split('.').pop().toLowerCase()
+      const path = 'team-' + Date.now() + '-' + Math.random().toString(36).slice(2) + '.' + ext
+      sb.storage.from('gallery-images').upload(path, file, { cacheControl:'3600', upsert:false }).then(function({ error: upErr }) {
+        if (upErr) { showMsg('teamMsg', '❌ ' + upErr.message, 'error'); btn.disabled = false; return }
+        doSave(sb.storage.from('gallery-images').getPublicUrl(path).data.publicUrl)
+      })
+    } else { doSave('') }
+  })
+
+  document.getElementById('cancelTeamBtn').addEventListener('click', function() {
+    clearTeamForm()
+    showMsg('teamMsg', 'Edit cancelled.', 'info')
+  })
+
+  function clearTeamForm() {
+    document.getElementById('editingTeamId').value = ''
+    document.getElementById('teamName').value = ''
+    document.getElementById('teamRole').value = ''
+    document.getElementById('teamDept').value = ''
+    document.getElementById('teamImage').value = ''
+    document.getElementById('teamPreview').style.display = 'none'
+    document.getElementById('cancelTeamBtn').style.display = 'none'
+  }
+
+  function loadTeam() {
+    sb.from('team_members').select('*').order('created_at', {ascending:false}).then(function({ data }) {
+      const wrap = document.getElementById('teamWrap')
+      if (!data || !data.length) { wrap.innerHTML = '<div class="empty"><i class="fas fa-users"></i>No team members yet.</div>'; return }
+      wrap.innerHTML = '<table class="data-table"><thead><tr><th>Photo</th><th>Name</th><th>Role</th><th>Dept</th><th></th></tr></thead><tbody>' +
+        data.map(function(m) { return '<tr><td><img src="' + esc(m.image_url||'') + '" style="width:52px;height:52px;object-fit:cover;border-radius:10px;background:#1a2f5a;" onerror="this.src=\'https://placehold.co/52x52/0f1e3d/e8651a?text=?\'" ></td><td><strong>' + esc(m.name) + '</strong></td><td>' + esc(m.role) + '</td><td>' + esc(m.dept) + '</td><td><div class="actions-cell"><button class="btn btn-ghost btn-sm" onclick="editTeamMember(\'' + m.id + '\')"><i class="fas fa-edit"></i></button><button class="btn btn-danger btn-sm" onclick="confirmDelete(\'team_members\',\'' + m.id + '\',\'' + esc(m.name) + '\',\'' + esc(m.image_url||'') + '\')"><i class="fas fa-trash"></i></button></div></td></tr>' }).join('') +
+        '</tbody></table>'
+    })
+  }
+
+  // ── SETTINGS / LOGO ──
+  document.getElementById('logoImage').addEventListener('change', function(e) {
+    const file = e.target.files[0]
+    if (file) { const r = new FileReader(); r.onload = function(ev) { document.getElementById('logoPreviewImg').src = ev.target.result; document.getElementById('logoPreview').style.display='block' }; r.readAsDataURL(file) }
+    else document.getElementById('logoPreview').style.display = 'none'
+  })
+
+  document.getElementById('saveLogoBtn').addEventListener('click', function() {
+    const file = document.getElementById('logoImage').files[0]
+    const btn  = document.getElementById('saveLogoBtn')
+    if (!file) { showMsg('settingsMsg', 'Choose a logo image.', 'error'); return }
+    btn.disabled = true; showMsg('settingsMsg', 'Saving...', 'info')
+    const ext  = file.name.split('.').pop().toLowerCase()
+    const path = 'logo-' + Date.now() + '.' + ext
+    sb.storage.from('gallery-images').upload(path, file, { cacheControl:'3600', upsert:false }).then(function({ error: upErr }) {
+      if (upErr) { showMsg('settingsMsg', '❌ ' + upErr.message, 'error'); btn.disabled = false; return }
+      const publicUrl = sb.storage.from('gallery-images').getPublicUrl(path).data.publicUrl
+      sb.from('settings').upsert([{ key: 'logo_url', value: publicUrl }], { onConflict:'key' }).then(function({ error }) {
+        btn.disabled = false
+        if (error) { showMsg('settingsMsg', '❌ ' + error.message, 'error'); return }
+        showMsg('settingsMsg', '✅ Logo saved!', 'success')
+        document.getElementById('logoImage').value = ''
+      })
+    })
+  })
+
+  // ── SESSION RESTORE (non-blocking) ──
+  sb.auth.getSession().then(function({ data: { session } }) {
+    if (session) { currentUser = session.user; showPanel() }
+  }).catch(function(e) { console.warn('Session check failed:', e) })
+</script>
+</body>
+</html>
